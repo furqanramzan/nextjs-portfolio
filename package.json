@@ -11,7 +11,8 @@
     "preview": "nx exec -- next start",
     "lint": "nx exec -- next lint",
     "typecheck": "nx exec -- tsc --noEmit",
-    "fmt": "nx exec -- prettier --write ."
+    "fmt": "nx exec -- prettier --write .",
+    "migration": "nx exec -- drizzle-kit generate:mysql --schema=./app/database/schema.ts --out=./.migrations"
   },
   "dependencies": {
     "@antfu/eslint-config": "^0.40.2",
@@ -19,12 +20,15 @@
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "drizzle-kit": "^0.19.12",
+    "drizzle-orm": "^0.28.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.5.0",
+    "mysql2": "^3.6.0",
     "next": "13.4.13",
     "nx": "^16.6.0",
     "postcss": "8.4.27",
@@ -39,6 +43,14 @@
       "build": {
         "outputs": [
           "{projectRoot}/.svelte-kit"
+        ]
+      },
+      "migration": {
+        "inputs": [
+          "{projectRoot}/app/database/schema.ts"
+        ],
+        "outputs": [
+          "{projectRoot}/.migrations"
         ]
       }
     }

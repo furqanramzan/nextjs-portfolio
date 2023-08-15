@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1692100859795,
+      "tag": "0000_busy_supreme_intelligence",
+      "breakpoints": true
+    }
+  ]
+}
