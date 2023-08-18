@@ -39,15 +39,15 @@ export async function upsertAdmin(inputs: UpsertAdminSchema) {
   return { data };
 }
 
+async function uniqueAdminEmail(email: string, id?: number) {
+  const repository = getRepository('admin');
+  const exists = await repository.emailExists(email, id);
+  return !exists;
+}
+
 async function savePassword(adminId: number, password?: string) {
   if (password) {
     password = await hash.hash(password);
     await getRepository('adminPassword').upsert({ password, adminId });
   }
-}
-
-async function uniqueAdminEmail(email: string, id?: number) {
-  const repository = getRepository('admin');
-  const exists = await repository.emailExists(email, id);
-  return !exists;
 }
