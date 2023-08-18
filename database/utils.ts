@@ -6,10 +6,17 @@ import type { MySql2Database } from 'drizzle-orm/mysql2';
 import { drizzle } from 'drizzle-orm/mysql2';
 import { migrate } from 'drizzle-orm/mysql2/migrator';
 
-export function mysqlConnection<T extends Record<string, unknown>>(schema?: T) {
-  const { host, port, user, password, database, rejectUnauthorized } =
-    getConstants();
+const {
+  host,
+  port,
+  user,
+  password,
+  database,
+  rejectUnauthorized,
+  automaticMigration,
+} = getConstants();
 
+export function mysqlConnection<T extends Record<string, unknown>>(schema?: T) {
   const connection = createConnection({
     host,
     port,
@@ -24,9 +31,7 @@ export function mysqlConnection<T extends Record<string, unknown>>(schema?: T) {
   return drizzle(connection, { schema, mode: 'default' });
 }
 
-export function automaticMigration(db: MySql2Database) {
-  const { automaticMigration } = getConstants();
-
+export function migrateAutomatically(db: MySql2Database) {
   if (automaticMigration) {
     return migrate(db, {
       migrationsFolder: './.migrations',
