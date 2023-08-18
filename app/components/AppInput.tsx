@@ -35,6 +35,7 @@ export interface InputItem {
   value?: string | number;
   errors?: string[];
   class?: HTMLAttributes<HTMLInputElement>['className'];
+  autoComplete?: 'off' | 'username' | 'current-password' | 'new-password';
 }
 
 interface Props {
@@ -76,6 +77,7 @@ export default function AppInput({ input }: Props) {
         multiple={multiple}
         max={input.max}
         aria-invalid={hasError}
+        autoComplete={input.autoComplete}
         className={`block w-full rounded-lg border p-2.5 text-sm ${
           hasError
             ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:bg-gray-700 dark:text-red-500 dark:placeholder-red-500'
