@@ -1,7 +1,7 @@
 'use client';
 
 import { upsertAdmin } from './actions';
-import { upsertAdminSchema } from './validation';
+import { upsertAdminSchema } from '@/app/admin/validation';
 import AppInput from '@/components/AppInput';
 import SubmitButton from '@/components/SubmitButton';
 import { useSubmitForm } from '@/hooks/submit-form';
@@ -11,6 +11,7 @@ export default function Form() {
     callback: upsertAdmin,
     schema: upsertAdminSchema,
   });
+
   return (
     <form onSubmit={submit} className="space-y-4 md:space-y-6">
       <div>

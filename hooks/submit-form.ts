@@ -30,7 +30,7 @@ export function useSubmitForm<TRequest, TResponse>({
     const formData = new FormData(event.currentTarget);
     const formDataEntries = Object.fromEntries(formData.entries());
 
-    const validateData = validate(formDataEntries, schema);
+    const validateData = await validate(formDataEntries, schema);
 
     if (!validateData.validated) {
       setErrors(validateData.errors);

@@ -1,9 +1,70 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "71ac174f-b024-461b-8f92-0536efeb5756",
+  "id": "a2322e36-4a66-44d0-be01-0192032fda8d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "njsp_admin_passwords": {
+      "name": "njsp_admin_passwords",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "admin_id": {
+          "name": "admin_id",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "njsp_admin_passwords_admin_id_njsp_admins_id_fk": {
+          "name": "njsp_admin_passwords_admin_id_njsp_admins_id_fk",
+          "tableFrom": "njsp_admin_passwords",
+          "tableTo": "njsp_admins",
+          "columnsFrom": ["admin_id"],
+          "columnsTo": ["id"],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "njsp_admin_passwords_id": {
+          "name": "njsp_admin_passwords_id",
+          "columns": ["id"]
+        }
+      },
+      "uniqueConstraints": {}
+    },
     "njsp_admins": {
       "name": "njsp_admins",
       "columns": {

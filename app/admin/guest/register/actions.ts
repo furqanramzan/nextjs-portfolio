@@ -1,20 +1,14 @@
 'use server';
 
-import { z } from 'zod';
 import { redirect } from 'next/navigation';
-import { upsertAdminSchema as schema } from './validation';
-import { validate } from '@/utils/validate';
+import type { UpsertAdminSchema } from '@/app/admin/validation';
+import { upsertAdmin as upsertAdminHandler } from '@/app/admin/upsert-admin';
 
-const upsertAdminSchema = schema.extend({
-  email: z.string().email(),
-});
-
-export async function upsertAdmin(inputs: z.infer<typeof upsertAdminSchema>) {
-  const parse = validate(inputs, upsertAdminSchema);
-  if (!parse.validated) {
-    const { errors } = parse;
-    return { errors };
+export async function upsertAdmin(inputs: UpsertAdminSchema) {
+  const result = await upsertAdminHandler(inputs);
+  if (result.data) {
+    redirect('/');
+  } else {
+    return result;
   }
-
-  redirect('/');
 }

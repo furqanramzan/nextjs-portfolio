@@ -15,11 +15,11 @@ interface ErrorResponse<T> {
 
 type ValidationResponse<T> = SuccessResponse<T> | ErrorResponse<T>;
 
-export function validate<T>(
+export async function validate<T>(
   inputs: unknown,
   schema: ZodType<T>,
-): ValidationResponse<T> {
-  const parse = schema.safeParse(inputs);
+): Promise<ValidationResponse<T>> {
+  const parse = await schema.safeParseAsync(inputs);
 
   if (parse.success) {
     const { data } = parse;
