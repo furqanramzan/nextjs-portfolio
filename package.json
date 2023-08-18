@@ -12,7 +12,7 @@
     "lint": "nx exec -- next lint",
     "typecheck": "nx exec -- tsc --noEmit",
     "fmt": "nx exec -- prettier --write .",
-    "migration": "nx exec -- drizzle-kit generate:mysql --schema=./app/database/schema.ts --out=./.migrations"
+    "migration": "nx exec -- drizzle-kit generate:mysql --schema=./database/schema.ts --out=./.migrations"
   },
   "dependencies": {
     "@antfu/eslint-config": "^0.40.2",
@@ -48,7 +48,7 @@
       },
       "migration": {
         "inputs": [
-          "{projectRoot}/app/database/schema.ts"
+          "{projectRoot}/database/schema.ts"
         ],
         "outputs": [
           "{projectRoot}/.migrations"

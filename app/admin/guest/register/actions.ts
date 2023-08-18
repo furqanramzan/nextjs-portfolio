@@ -3,7 +3,7 @@
 import { z } from 'zod';
 import { redirect } from 'next/navigation';
 import { upsertAdminSchema as schema } from './validation';
-import { validate } from '@/app/utils/validate';
+import { validate } from '@/utils/validate';
 
 const upsertAdminSchema = schema.extend({
   email: z.string().email(),
