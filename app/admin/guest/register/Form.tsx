@@ -4,7 +4,7 @@ import { upsertAdmin } from './actions';
 import { upsertAdminSchema } from './validation';
 import AppInput from '@/app/components/AppInput';
 import SubmitButton from '@/app/components/SubmitButton';
-import { useSubmitForm } from '@/app/utils/submit-form';
+import { useSubmitForm } from '@/app/hooks/submit-form';
 
 export default function Form() {
   const { submitting, errors, submit } = useSubmitForm({

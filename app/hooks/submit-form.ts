@@ -1,6 +1,6 @@
 import { type FormEvent, useState } from 'react';
 import type { ZodType, z } from 'zod';
-import { type FieldErrors, validate } from './validate';
+import { type FieldErrors, validate } from '../utils/validate';
 
 interface CallbackResponse<TRequest, TResponse> {
   data?: TResponse;
