@@ -1,5 +1,4 @@
-import AppInput from '@/app/components/AppInput';
-import SubmitButton from '@/app/components/SubmitButton';
+import Form from './Form';
 
 export default function register() {
   return (
@@ -9,37 +8,7 @@ export default function register() {
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
             Create your account
           </h1>
-          <form method="post" className="space-y-4 md:space-y-6">
-            <div>
-              <AppInput
-                input={{
-                  name: 'name',
-                  label: 'Your name',
-                  placeholder: 'John doe',
-                }}
-              />
-            </div>
-            <div>
-              <AppInput
-                input={{
-                  name: 'email',
-                  type: 'email',
-                  label: 'Your email',
-                  placeholder: 'name@company.com',
-                }}
-              />
-            </div>
-            <div>
-              <AppInput
-                input={{
-                  name: 'password',
-                  type: 'password',
-                  placeholder: '••••••••',
-                }}
-              />
-            </div>
-            <SubmitButton wFull={true}>Sign up</SubmitButton>
-          </form>
+          <Form />
         </div>
       </div>
     </div>
