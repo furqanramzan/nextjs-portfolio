@@ -25,7 +25,7 @@ const connection = createConnection({
   },
 });
 
-export const drizzle = drizzleOrm(connection, { schema, mode: 'default' });
+export const drizzle = drizzleOrm(connection, { schema, mode: 'planetscale' });
 
 if (automaticMigration) {
   migrate(drizzle, {

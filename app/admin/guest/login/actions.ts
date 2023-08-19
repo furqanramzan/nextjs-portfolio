@@ -29,7 +29,7 @@ export async function login(inputs: LoginSchema) {
       const token = await jwt.encode(jwtData);
       setToken(token);
 
-      redirect('/');
+      redirect('/admin/auth/dashboard');
     }
   }
 
