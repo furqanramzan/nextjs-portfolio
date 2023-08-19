@@ -1,43 +1,6 @@
 import { env } from 'node:process';
 import { mysqlTableCreator as drizzleMysqlTableCreator } from 'drizzle-orm/mysql-core';
 import { z } from 'zod';
-import { createConnection } from 'mysql2';
-import type { MySql2Database } from 'drizzle-orm/mysql2';
-import { drizzle } from 'drizzle-orm/mysql2';
-import { migrate } from 'drizzle-orm/mysql2/migrator';
-
-const {
-  host,
-  port,
-  user,
-  password,
-  database,
-  rejectUnauthorized,
-  automaticMigration,
-} = getConstants();
-
-export function mysqlConnection<T extends Record<string, unknown>>(schema?: T) {
-  const connection = createConnection({
-    host,
-    port,
-    user,
-    password,
-    database,
-    ssl: {
-      rejectUnauthorized,
-    },
-  });
-
-  return drizzle(connection, { schema, mode: 'default' });
-}
-
-export function migrateAutomatically(db: MySql2Database) {
-  if (automaticMigration) {
-    return migrate(db, {
-      migrationsFolder: './.migrations',
-    });
-  }
-}
 
 export function mysqlTableCreator() {
   const { DATABASE_TABLE_PREFIX } = z
@@ -48,7 +11,7 @@ export function mysqlTableCreator() {
   return drizzleMysqlTableCreator((name) => `${DATABASE_TABLE_PREFIX}_${name}`);
 }
 
-function getConstants() {
+export function getConstants() {
   const constants = z
     .object({
       DATABASE_HOST: z.string(),

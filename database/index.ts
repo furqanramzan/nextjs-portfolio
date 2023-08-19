@@ -1,6 +1,34 @@
-import { migrateAutomatically, mysqlConnection } from './utils';
+import { drizzle as drizzleOrm } from 'drizzle-orm/mysql2';
+import { createConnection } from 'mysql2';
+import { migrate } from 'drizzle-orm/mysql2/migrator';
 import * as schema from './schema';
+import { getConstants } from './utils';
 
-export const drizzle = mysqlConnection(schema);
+const {
+  host,
+  port,
+  user,
+  password,
+  database,
+  rejectUnauthorized,
+  automaticMigration,
+} = getConstants();
 
-migrateAutomatically(drizzle);
+const connection = createConnection({
+  host,
+  port,
+  user,
+  password,
+  database,
+  ssl: {
+    rejectUnauthorized,
+  },
+});
+
+export const drizzle = drizzleOrm(connection, { schema, mode: 'default' });
+
+if (automaticMigration) {
+  migrate(drizzle, {
+    migrationsFolder: './.migrations',
+  });
+}
