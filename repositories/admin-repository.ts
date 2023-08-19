@@ -1,4 +1,4 @@
-import { type InferModel, desc, eq } from 'drizzle-orm';
+import { type InferModel, eq } from 'drizzle-orm';
 import { BaseRepository } from './base-repository';
 import { admins } from '@/database/schema';
 
@@ -27,5 +27,13 @@ export class AdminRepository extends BaseRepository<Admin> {
 
   emailExists(email: string, id?: number) {
     return this.existsWithEqualConstraint(this.table.email, email, id);
+  }
+
+  getLoginData(email: string) {
+    return this.drizzle.query.admins.findFirst({
+      with: { adminPassword: true },
+      columns: { id: true, name: true, email: true },
+      where: eq(this.table.email, email),
+    });
   }
 }

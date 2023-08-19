@@ -26,5 +26,5 @@ export async function isAdminExists() {
 }
 
 function redirectAdmin() {
-  redirect('/');
+  redirect('/admin/guest/login');
 }
