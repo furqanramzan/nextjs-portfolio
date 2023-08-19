@@ -1,6 +1,6 @@
-import jwtwebtoken from 'jsonwebtoken';
-import { env } from 'node:process';
-import { z } from 'zod';
+import * as jose from 'jose';
+import { JWT_SECRET } from './contants';
+import promise from './promise';
 
 export interface JwtData {
   id: number;
@@ -8,52 +8,30 @@ export interface JwtData {
   email: string;
 }
 
-const { secret } = getConstants();
-
 class Jwt {
   private secret: string;
 
   constructor() {
-    this.secret = secret;
+    this.secret = JWT_SECRET;
   }
 
   encode(data: JwtData) {
-    return jwtwebtoken.sign({ ...data }, this.secret);
+    return new jose.SignJWT({ user: data })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('30d')
+      .sign(new TextEncoder().encode(this.secret));
   }
 
-  verify(token: string) {
-    try {
-      jwtwebtoken.verify(token, this.secret);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
+  async verify(token: string) {
+    const verifyPromise = await promise(() =>
+      jose.jwtVerify(token, new TextEncoder().encode(this.secret)),
+    );
 
-  decode(token: string) {
-    return jwtwebtoken.decode(token) as JwtData;
-  }
-
-  verifyAndDecode(token: string) {
-    const verified = this.verify(token);
-    if (verified) {
-      return this.decode(token);
-    } else {
-      return null;
+    if (verifyPromise.success) {
+      return verifyPromise.data.payload.user as JwtData;
     }
   }
 }
 
 export const jwt = new Jwt();
-
-function getConstants() {
-  const constants = z
-    .object({
-      JWT_SECRET: z.string(),
-    })
-    .parse(env);
-
-  return {
-    secret: constants.JWT_SECRET,
-  };
-}

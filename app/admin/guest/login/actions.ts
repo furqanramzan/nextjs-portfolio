@@ -26,7 +26,7 @@ export async function login(inputs: LoginSchema) {
       adminPassword.password,
     );
     if (passwordMatched) {
-      const token = jwt.encode(jwtData);
+      const token = await jwt.encode(jwtData);
       setToken(token);
 
       redirect('/');
