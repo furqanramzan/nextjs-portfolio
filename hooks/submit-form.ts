@@ -5,6 +5,7 @@ import { type FieldErrors, validate } from '../utils/validate';
 interface CallbackResponse<TRequest, TResponse> {
   data?: TResponse;
   errors?: FieldErrors<TRequest>;
+  message?: string;
 }
 type Callback<TRequest, TResponse> = (
   data: z.infer<ZodType<TRequest>>,
@@ -21,6 +22,7 @@ export function useSubmitForm<TRequest, TResponse>({
 }: FormOptions<TRequest, TResponse>) {
   const [submitting, setSubmitting] = useState(false);
   const [data, setData] = useState<TResponse>();
+  const [message, setMessage] = useState<string>();
   const [errors, setErrors] = useState<FieldErrors<TRequest>>({});
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -39,7 +41,15 @@ export function useSubmitForm<TRequest, TResponse>({
       const response = await callback(validateData.data);
 
       if (response) {
-        const { data: responseData, errors: responseErrors } = response;
+        const {
+          message: responseMessage,
+          data: responseData,
+          errors: responseErrors,
+        } = response;
+
+        if (responseMessage) {
+          setMessage(responseMessage);
+        }
 
         if (responseData) {
           setData(responseData);
@@ -54,5 +64,5 @@ export function useSubmitForm<TRequest, TResponse>({
     setSubmitting(false);
   }
 
-  return { submitting, data, errors, submit };
+  return { submitting, message, data, errors, submit };
 }
