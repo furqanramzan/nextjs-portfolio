@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Github, Upwork } from './Icons';
 import { APP_NAME } from '@/utils/contants';
 import Tooltip from '@/components/Tooltip';
@@ -27,9 +28,9 @@ export default function Footer({ className }: { className?: string }) {
     >
       <p className="mb-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
         &copy; {currentYear}
-        <a href="/" className="hover:underline" target="_blank">
+        <Link href="/" className="hover:underline" target="_blank">
           {APP_NAME}
-        </a>
+        </Link>
         . All rights reserved.
       </p>
       <div className="flex items-center justify-center space-x-1">
