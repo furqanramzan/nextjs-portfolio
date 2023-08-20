@@ -5,6 +5,7 @@ import {
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/mysql-core';
+import type { InferModel } from 'drizzle-orm';
 import { relations } from 'drizzle-orm';
 import { mysqlTableCreator } from './utils';
 
@@ -23,6 +24,7 @@ export const admins = mysqlTable(
     emailIdx: uniqueIndex('email_idx').on(table.email),
   }),
 );
+export type Admin = InferModel<typeof admins, 'select'>;
 
 export const adminPasswords = mysqlTable('admin_passwords', {
   id: serial('id').primaryKey(),

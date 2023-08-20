@@ -52,7 +52,7 @@ export default function Input({ input }: Props) {
   const type = input.type || 'text';
   const label = input.label || name.charAt(0).toUpperCase() + name.slice(1);
   const showLabel = input.showLabel || true;
-  const required = input.required || true;
+  const required = input.required === undefined ? true : input.required;
   const placeholder = input.placeholder || `Type ${name} here`;
   const errors = input.errors || [];
   const hasError = errors.length > 0;
