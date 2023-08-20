@@ -2,7 +2,7 @@ import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
 import type { LinkItem } from './components/SidebarLink';
 import Navbar from '@/app/admin/components/Navbar';
-import AppLayout from '@/components/AppLayout';
+import Layout from '@/components/Layout';
 
 export default function Auth({ children }: { children: React.ReactNode }) {
   const links: LinkItem[] = [
@@ -13,7 +13,7 @@ export default function Auth({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <AppLayout>
+    <Layout>
       <Navbar />
 
       <Sidebar links={links} />
@@ -25,6 +25,6 @@ export default function Auth({ children }: { children: React.ReactNode }) {
 
         <Footer />
       </div>
-    </AppLayout>
+    </Layout>
   );
 }

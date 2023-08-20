@@ -1,6 +1,6 @@
 import React from 'react';
-import AppLogo from '@/components/AppLogo';
-import AppDarkMode from '@/components/darkmode/AppDarkMode';
+import Logo from '@/components/Logo';
+import DarkMode from '@/components/darkmode/DarkMode';
 
 export default function Navbar() {
   return (
@@ -9,12 +9,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start">
             <div className="ml-2 flex md:mr-24">
-              <AppLogo />
+              <Logo />
             </div>
           </div>
           <div className="flex items-center">
             <div className="mr-3 flex items-center">
-              <AppDarkMode />
+              <DarkMode />
             </div>
           </div>
         </div>

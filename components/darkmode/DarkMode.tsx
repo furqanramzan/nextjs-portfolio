@@ -2,7 +2,7 @@
 
 import { setColorTheme } from './action';
 
-export default function AppDarkMode() {
+export default function DarkMode() {
   const toggleTheme = async () => {
     const isDark = window.document.documentElement.classList.toggle('dark');
     await setColorTheme(isDark ? 'dark' : 'light');

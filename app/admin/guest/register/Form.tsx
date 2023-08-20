@@ -2,7 +2,7 @@
 
 import { upsertAdmin } from './actions';
 import { upsertAdminSchema } from '@/app/admin/validation';
-import AppInput from '@/components/AppInput';
+import Input from '@/components/Input';
 import SubmitButton from '@/components/SubmitButton';
 import { useSubmitForm } from '@/hooks/submit-form';
 
@@ -15,7 +15,7 @@ export default function Form() {
   return (
     <form onSubmit={submit} className="space-y-4 md:space-y-6">
       <div>
-        <AppInput
+        <Input
           input={{
             name: 'name',
             label: 'Your name',
@@ -25,7 +25,7 @@ export default function Form() {
         />
       </div>
       <div>
-        <AppInput
+        <Input
           input={{
             name: 'email',
             label: 'Your email',
@@ -36,7 +36,7 @@ export default function Form() {
         />
       </div>
       <div>
-        <AppInput
+        <Input
           input={{
             name: 'password',
             type: 'password',

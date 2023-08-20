@@ -1,6 +1,6 @@
 import { Github, Upwork } from './Icons';
 import { APP_NAME } from '@/utils/contants';
-import AppTooltip from '@/components/AppTooltip';
+import Tooltip from '@/components/Tooltip';
 
 export default function Footer({ className }: { className?: string }) {
   const currentYear = new Date().getFullYear();
@@ -34,7 +34,7 @@ export default function Footer({ className }: { className?: string }) {
       </p>
       <div className="flex items-center justify-center space-x-1">
         {socialLinks.map(({ name, title, description, href, icon }) => (
-          <AppTooltip key={name} content={description}>
+          <Tooltip key={name} content={description}>
             <a
               href={href}
               target="_blank"
@@ -43,7 +43,7 @@ export default function Footer({ className }: { className?: string }) {
               {icon()}
               <span className="sr-only">{title}</span>
             </a>
-          </AppTooltip>
+          </Tooltip>
         ))}
       </div>
     </footer>

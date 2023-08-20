@@ -42,7 +42,7 @@ interface Props {
   input: InputItem;
 }
 
-export default function AppInput({ input }: Props) {
+export default function Input({ input }: Props) {
   const name = input.name;
   const min = input.min || 0;
   const value = input.value || '';

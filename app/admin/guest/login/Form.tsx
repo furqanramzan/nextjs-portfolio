@@ -2,7 +2,7 @@
 
 import { login } from './actions';
 import { loginSchema } from './validation';
-import AppInput from '@/components/AppInput';
+import Input from '@/components/Input';
 import ErrorAlert from '@/components/ErrorAlert';
 import SubmitButton from '@/components/SubmitButton';
 import { useSubmitForm } from '@/hooks/submit-form';
@@ -18,7 +18,7 @@ export default function Form() {
       {message && <ErrorAlert>{message}</ErrorAlert>}
       <form onSubmit={submit} className="space-y-4 md:space-y-6">
         <div>
-          <AppInput
+          <Input
             input={{
               name: 'email',
               type: 'email',
@@ -30,7 +30,7 @@ export default function Form() {
           />
         </div>
         <div>
-          <AppInput
+          <Input
             input={{
               name: 'password',
               type: 'password',
