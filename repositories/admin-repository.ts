@@ -2,10 +2,11 @@ import { type InferModel, eq } from 'drizzle-orm';
 import { BaseRepository } from './base-repository';
 import { admins } from '@/database/schema';
 
-type Admin = typeof admins;
-type Create = InferModel<Admin, 'insert'>;
+type Admins = typeof admins;
+export type Admin = InferModel<Admins, 'select'>;
+type Create = InferModel<Admins, 'insert'>;
 
-export class AdminRepository extends BaseRepository<Admin> {
+export class AdminRepository extends BaseRepository<Admins> {
   constructor() {
     super(admins);
   }

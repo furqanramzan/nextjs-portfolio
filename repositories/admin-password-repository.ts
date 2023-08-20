@@ -1,4 +1,4 @@
-import type { InferModel } from 'drizzle-orm';
+import { type InferModel, eq } from 'drizzle-orm';
 import { BaseRepository } from './base-repository';
 import { adminPasswords } from '@/database/schema';
 
@@ -11,9 +11,19 @@ export class AdminPasswordRepository extends BaseRepository<AdminPassword> {
   }
 
   async upsert(values: Create) {
-    // TODO: update on conflict
-    const result = await this.drizzle.insert(this.table).values(values);
+    const item = await this.getOneByColumn(this.table.adminId, values.adminId);
 
-    return this.createResponse(result);
+    if (item) {
+      const result = await this.drizzle
+        .update(this.table)
+        .set(values)
+        .where(eq(this.table.id, item.id));
+
+      return this.updateResponse(result, item.id);
+    } else {
+      const result = await this.drizzle.insert(this.table).values(values);
+
+      return this.createResponse(result);
+    }
   }
 }

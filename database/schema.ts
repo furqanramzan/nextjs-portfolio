@@ -24,11 +24,12 @@ export const admins = mysqlTable(
     emailIdx: uniqueIndex('email_idx').on(table.email),
   }),
 );
-export type Admin = InferModel<typeof admins, 'select'>;
 
 export const adminPasswords = mysqlTable('admin_passwords', {
   id: serial('id').primaryKey(),
-  adminId: bigint('admin_id', { mode: 'number' }).references(() => admins.id),
+  adminId: bigint('admin_id', { mode: 'number' })
+    .notNull()
+    .references(() => admins.id),
   password: varchar('password', { length: 256 }).notNull(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),

@@ -7,9 +7,7 @@ export async function middleware(request: NextRequest) {
     const admin = await getAdmin();
 
     if (admin) {
-      return NextResponse.redirect(
-        new URL('/admin/auth/dashboard', request.url),
-      );
+      return NextResponse.redirect(new URL('/admin/auth/admin', request.url));
     }
   }
 

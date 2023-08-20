@@ -4,8 +4,8 @@ import { upsertAdmin } from '@/app/admin/auth/admin/actions';
 import Upsert from '@/app/admin/auth/components/Upsert';
 import { upsertAdminSchema } from '@/app/admin/validation';
 import Input from '@/components/Input';
-import type { Admin } from '@/database/schema';
 import { useSubmitForm } from '@/hooks/submit-form';
+import type { Admin } from '@/repositories/admin-repository';
 
 interface Props {
   item?: Admin;

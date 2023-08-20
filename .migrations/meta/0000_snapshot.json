@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "a2322e36-4a66-44d0-be01-0192032fda8d",
+  "id": "9ed5fe1b-8481-44e3-ae13-06271cf36d2e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "njsp_admin_passwords": {
@@ -18,7 +18,7 @@
           "name": "admin_id",
           "type": "bigint",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "password": {
