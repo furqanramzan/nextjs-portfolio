@@ -7,8 +7,8 @@ import Layout from '@/components/Layout';
 export default function Auth({ children }: { children: React.ReactNode }) {
   const links: LinkItem[] = [
     {
-      name: 'Dashboard',
-      href: '/admin/auth/dashboard',
+      name: 'Admin',
+      href: '/admin/auth/admin',
     },
   ];
 
