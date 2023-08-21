@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import DummyDataButton from './DummyDataButton';
 import AddLink from './AddLink';
 import NoDataRow from './NoDataRow';
-import { DEV } from '@/utils/contants';
+import { DEV } from '@/utils/constants';
 
 interface Props {
   name: { plural?: string; singular: string };

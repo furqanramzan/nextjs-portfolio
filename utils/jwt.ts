@@ -1,5 +1,5 @@
 import * as jose from 'jose';
-import { JWT_SECRET } from './contants';
+import { JWT_SECRET } from './constants';
 import promise from './promise';
 
 export interface JwtData {

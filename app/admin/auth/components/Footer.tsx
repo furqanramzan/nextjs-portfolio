@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Github, Upwork } from './Icons';
-import { APP_NAME } from '@/utils/contants';
+import { APP_NAME } from '@/utils/constants';
 import Tooltip from '@/components/Tooltip';
 
 export default function Footer({ className }: { className?: string }) {
