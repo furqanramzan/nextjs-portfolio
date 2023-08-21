@@ -15,7 +15,7 @@ export default function HeaderLink({ link }: Props) {
   return (
     <Link href={link.href}>
       <div
-        className={`flex h-28 w-28 flex-col items-center justify-center gap-1 rounded-3xl bg-gray-200 hover:shadow-lg focus:ring-primary-300 dark:bg-gray-900 dark:text-white dark:focus:ring-primary-800 ${
+        className={`flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-3xl bg-gray-200 hover:shadow-lg focus:ring-primary-300 dark:bg-gray-900 dark:text-white dark:focus:ring-primary-800 ${
           isCurrentLinkActive &&
           'bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700'
         }`}

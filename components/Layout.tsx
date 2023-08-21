@@ -3,7 +3,10 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { themeClass } from './darkmode/utils';
 
-const font = Poppins({ weight: ['700', '600', '500'], subsets: ['latin'] });
+const font = Poppins({
+  weight: ['700', '600', '500', '400'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
