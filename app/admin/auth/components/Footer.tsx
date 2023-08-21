@@ -27,7 +27,7 @@ export default function Footer({ className }: { className?: string }) {
       className={`mt-auto w-full rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 sm:flex sm:items-center sm:justify-between sm:p-4 ${className}`}
     >
       <p className="mb-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:mb-0">
-        &copy; {currentYear}
+        &copy; {currentYear}{' '}
         <Link href="/" className="hover:underline" target="_blank">
           {APP_NAME}
         </Link>
