@@ -1,9 +1,9 @@
 import '@/app/globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { themeClass } from './darkmode/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Poppins({ weight: ['700', '600', '500'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={themeClass()}>
-      <body className={`${inter.className} bg-gray-100 dark:bg-gray-900`}>
+      <body className={`${font.className} bg-gray-100 dark:bg-gray-900`}>
         {children}
       </body>
     </html>

@@ -4,7 +4,7 @@ import type { LinkItem } from './components/SidebarLink';
 import Navbar from '@/app/admin/components/Navbar';
 import Layout from '@/components/Layout';
 
-export default function Auth({ children }: { children: React.ReactNode }) {
+export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const links: LinkItem[] = [
     {
       name: 'Admin',
