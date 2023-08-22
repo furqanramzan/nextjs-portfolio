@@ -170,17 +170,17 @@ const contacts = [
 
 export default function Sidebar() {
   return (
-    <div className="flex w-1/3 flex-col items-center self-start rounded-3xl bg-white pb-12 dark:bg-gray-800">
-      <Image
-        className="absolute top-0 rounded-3xl"
-        src="/profile.png"
-        alt="Benjamin Kamau"
-        width="206"
-        height="253"
-        priority
-      />
-      <div className="flex w-full flex-col items-center gap-5 px-5">
-        <h1 className="mt-32 text-2xl font-bold dark:text-white">
+    <div className="flex w-full flex-col items-center gap-5 self-start rounded-3xl bg-white px-5 py-12 dark:bg-gray-800 md:flex-row lg:w-1/3 lg:flex-col">
+      <div className="flex w-full flex-col items-center gap-5">
+        <Image
+          className="relative top-0 rounded-3xl lg:absolute"
+          src="/profile.png"
+          alt="Benjamin Kamau"
+          width="206"
+          height="253"
+          priority
+        />
+        <h1 className="mt-5 text-2xl font-bold dark:text-white lg:mt-20">
           Benjamin Kamau
         </h1>
         <h6 className="text-lg font-medium text-gray-500 dark:text-white">
@@ -198,46 +198,46 @@ export default function Sidebar() {
             </li>
           ))}
         </ul>
-        <div className="flex flex-col gap-6 rounded-3xl bg-gray-100 p-10 dark:bg-gray-900">
-          <ul className="flex w-full flex-col gap-6">
-            {contacts.map((contact, index) => (
-              <li key={index} className="border-b-2 pb-6 dark:border-gray-700">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 text-primary-600">
-                    {contact.icon}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm text-gray-500 dark:text-gray-400">
-                      {contact.title}
-                    </p>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
-                      {contact.description}
-                    </p>
-                  </div>
+      </div>
+      <div className="flex flex-col gap-6 rounded-3xl bg-gray-100 px-5 py-10 dark:bg-gray-900 xl:px-10">
+        <ul className="flex w-full flex-col gap-6">
+          {contacts.map((contact, index) => (
+            <li key={index} className="border-b-2 pb-6 dark:border-gray-700">
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 text-primary-600">
+                  {contact.icon}
                 </div>
-              </li>
-            ))}
-          </ul>
-          <div className="flex justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center rounded-full bg-primary-600 px-7 py-3.5 text-center text-lg font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm text-gray-500 dark:text-gray-400">
+                    {contact.title}
+                  </p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {contact.description}
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full bg-primary-600 px-7 py-3.5 text-center text-lg font-medium text-white hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 256 256"
+              className="mr-3"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 256 256"
-                className="mr-3"
-              >
-                <path
-                  fill="currentColor"
-                  d="M119.76 217.94A8 8 0 0 1 112 224a8.13 8.13 0 0 1-2-.24l-32-8a8 8 0 0 1-2.5-1.11l-24-16a8 8 0 1 1 8.88-13.31l22.84 15.23l30.66 7.67a8 8 0 0 1 5.88 9.7Zm132.69-96.46a15.89 15.89 0 0 1-8 9.25l-23.68 11.84l-15.08 15.09l-40 40a8 8 0 0 1-7.6 2.1l-64-16a8.06 8.06 0 0 1-2.71-1.25l-55.52-39.64l-24.28-12.14a16 16 0 0 1-7.16-21.46l24.85-49.69a16 16 0 0 1 21.46-7.16l22.06 11l53-15.14a8 8 0 0 1 4.4 0l53 15.14l22.06-11a16 16 0 0 1 21.46 7.16l24.85 49.69a15.9 15.9 0 0 1 .89 12.21ZM188 152.66l-27.71-22.19c-19.54 16-44.35 18.11-64.91 5a16 16 0 0 1-2.72-24.82a.6.6 0 0 1 .08-.08l44.86-43.51l-9.6-2.74l-50.42 14.41l-27.37 54.73l49.2 35.15l58.14 14.53Zm18.24-18.24L179.06 80h-31.82L104 122c12.66 8.09 32.51 10.32 50.32-7.63a8 8 0 0 1 10.68-.61l34.41 27.57Z"
-                />
-              </svg>
-              Contact now
-            </Link>
-          </div>
+              <path
+                fill="currentColor"
+                d="M119.76 217.94A8 8 0 0 1 112 224a8.13 8.13 0 0 1-2-.24l-32-8a8 8 0 0 1-2.5-1.11l-24-16a8 8 0 1 1 8.88-13.31l22.84 15.23l30.66 7.67a8 8 0 0 1 5.88 9.7Zm132.69-96.46a15.89 15.89 0 0 1-8 9.25l-23.68 11.84l-15.08 15.09l-40 40a8 8 0 0 1-7.6 2.1l-64-16a8.06 8.06 0 0 1-2.71-1.25l-55.52-39.64l-24.28-12.14a16 16 0 0 1-7.16-21.46l24.85-49.69a16 16 0 0 1 21.46-7.16l22.06 11l53-15.14a8 8 0 0 1 4.4 0l53 15.14l22.06-11a16 16 0 0 1 21.46 7.16l24.85 49.69a15.9 15.9 0 0 1 .89 12.21ZM188 152.66l-27.71-22.19c-19.54 16-44.35 18.11-64.91 5a16 16 0 0 1-2.72-24.82a.6.6 0 0 1 .08-.08l44.86-43.51l-9.6-2.74l-50.42 14.41l-27.37 54.73l49.2 35.15l58.14 14.53Zm18.24-18.24L179.06 80h-31.82L104 122c12.66 8.09 32.51 10.32 50.32-7.63a8 8 0 0 1 10.68-.61l34.41 27.57Z"
+              />
+            </svg>
+            Contact now
+          </Link>
         </div>
       </div>
     </div>

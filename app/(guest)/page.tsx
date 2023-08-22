@@ -49,9 +49,9 @@ const services = [
         <g
           fill="none"
           stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         >
           <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" />
           <path d="M7 10v2a2 2 0 1 0 4 0v-2m3 0l3 4m-3 0l3-4" />
@@ -81,7 +81,7 @@ const services = [
 
 export default function Home() {
   return (
-    <div className="flex w-full flex-col gap-8 rounded-3xl bg-white px-14 py-8 dark:bg-gray-800 dark:text-white">
+    <div className="flex w-full flex-col gap-8">
       <h2 className="text-5xl font-medium">ABOUT ME</h2>
       <p className="text-justify leading-7">
         Hello there! I am thrilled to welcome you to my portfolio. I am a
@@ -92,13 +92,13 @@ export default function Home() {
         the industry.
       </p>
       <h2 className="text-4xl font-medium">What I do!</h2>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {services.map((service, index) => (
           <div
             key={index}
             className="rounded-3xl bg-gray-100 p-6 hover:bg-primary-200  dark:bg-gray-900 dark:hover:bg-primary-800"
           >
-            <h6 className="flex gap-3 text-2xl font-semibold">
+            <h6 className="flex flex-wrap gap-x-3 text-2xl font-semibold">
               <span className="text-primary-600">{service.icon}</span>
               {service.title}
             </h6>
