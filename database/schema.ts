@@ -1,11 +1,11 @@
 import {
   bigint,
   serial,
+  text,
   timestamp,
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/mysql-core';
-import type { InferModel } from 'drizzle-orm';
 import { relations } from 'drizzle-orm';
 import { mysqlTableCreator } from './utils';
 
@@ -41,3 +41,12 @@ export const adminsRelations = relations(admins, ({ one }) => ({
     references: [adminPasswords.adminId],
   }),
 }));
+
+export const services = mysqlTable('services', {
+  id: serial('id').primaryKey(),
+  title: varchar('title', { length: 256 }).notNull(),
+  description: varchar('description', { length: 256 }).notNull(),
+  icon: text('icon').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});

@@ -17,4 +17,12 @@ CREATE TABLE `njsp_admins` (
 	CONSTRAINT `email_idx` UNIQUE(`email`)
 );
 --> statement-breakpoint
-ALTER TABLE `njsp_admin_passwords` ADD CONSTRAINT `njsp_admin_passwords_admin_id_njsp_admins_id_fk` FOREIGN KEY (`admin_id`) REFERENCES `njsp_admins`(`id`) ON DELETE no action ON UPDATE no action;
+CREATE TABLE `njsp_services` (
+	`id` serial AUTO_INCREMENT NOT NULL,
+	`title` varchar(256) NOT NULL,
+	`description` varchar(256) NOT NULL,
+	`icon` text NOT NULL,
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()),
+	CONSTRAINT `njsp_services_id` PRIMARY KEY(`id`)
+);

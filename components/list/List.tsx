@@ -31,7 +31,7 @@ export default function List({ name, columns, items, dummy, children }: Props) {
             </form>
           )}
           <AddLink
-            href="/admin/auth/{name.singular}/upsert"
+            href={`/admin/auth/${name.singular}/create`}
             name={name.singular}
           />
         </div>
