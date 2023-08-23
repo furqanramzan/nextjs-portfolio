@@ -1,4 +1,4 @@
-import { destroy, get } from './actions';
+import { destroy, dummy, get } from './actions';
 import List from '@/components/list/List';
 import Row from '@/components/list/Row';
 
@@ -8,7 +8,12 @@ export default async function Service() {
   const { items } = await get();
 
   return (
-    <List items={items} name={name} columns={['Title', 'Description', 'Icon']}>
+    <List
+      items={items}
+      name={name}
+      columns={['Title', 'Description', 'Icon']}
+      dummy={dummy}
+    >
       {items.map((item) => (
         <Row
           key={item.id}

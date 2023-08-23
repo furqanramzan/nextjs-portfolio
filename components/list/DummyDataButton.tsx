@@ -1,7 +1,23 @@
-export default function DummyDataButton() {
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+export type DummyCallback = () => Promise<void>;
+interface Props {
+  dummy: DummyCallback;
+}
+
+export default function DummyDataButton({ dummy }: Props) {
+  const router = useRouter();
+  async function handleDummy() {
+    await dummy();
+    router.refresh();
+  }
+
   return (
     <button
-      type="submit"
+      onClick={handleDummy}
+      type="button"
       className="flex items-center justify-center rounded-lg bg-secondary-600 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-700 focus:outline-none focus:ring-4 focus:ring-secondary-300 dark:bg-secondary-600 dark:hover:bg-secondary-700 dark:focus:ring-secondary-800"
     >
       <svg

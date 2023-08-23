@@ -17,6 +17,12 @@ export class ServiceRepository extends BaseRepository<Services> {
     return this.createResponse(result);
   }
 
+  async createMany(values: Create[]) {
+    const result = await this.drizzle.insert(this.table).values(values);
+
+    return this.createManyResponse(result);
+  }
+
   async update(values: Create, id: number) {
     const result = await this.drizzle
       .update(this.table)

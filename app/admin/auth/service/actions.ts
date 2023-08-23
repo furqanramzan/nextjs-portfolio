@@ -13,6 +13,7 @@ import {
 } from '@/utils/get-many';
 import { throwIfNotFound } from '@/utils/errors';
 import { validate } from '@/utils/validate';
+import { services } from '@/dummy/service';
 
 const repository = getRepository('service');
 
@@ -43,4 +44,8 @@ export async function upsert(inputs: UpsertServiceSchema) {
 
 export async function destroy(id: number) {
   return throwIfNotFound(await repository.destroy(id));
+}
+
+export async function dummy() {
+  await services();
 }

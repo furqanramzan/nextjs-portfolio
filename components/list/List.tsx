@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import DummyDataButton from './DummyDataButton';
+import DummyDataButton, { type DummyCallback } from './DummyDataButton';
 import AddLink from './AddLink';
 import NoDataRow from './NoDataRow';
 import { DEV } from '@/utils/constants';
@@ -8,7 +8,7 @@ interface Props {
   name: { plural?: string; singular: string };
   columns: string[];
   items: Record<string, unknown>[];
-  dummy?: boolean;
+  dummy?: DummyCallback;
   children: ReactNode;
 }
 
@@ -25,11 +25,7 @@ export default function List({ name, columns, items, dummy, children }: Props) {
         </h1>
 
         <div className="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0">
-          {dummy && DEV && (
-            <form method="post" action="?/dummy">
-              <DummyDataButton />
-            </form>
-          )}
+          {DEV && dummy && <DummyDataButton dummy={dummy} />}
           <AddLink
             href={`/admin/auth/${name.singular}/create`}
             name={name.singular}
