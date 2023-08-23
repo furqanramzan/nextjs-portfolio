@@ -1,11 +1,11 @@
-import { getItems } from './actions';
+import { destroy, get } from './actions';
 import List from '@/components/list/List';
 import Row from '@/components/list/Row';
 
 const name = { singular: 'admin' };
 
 export default async function Admin() {
-  const { items } = await getItems();
+  const { items } = await get();
 
   return (
     <List items={items} name={name} columns={['Name', 'Email']}>
@@ -16,6 +16,7 @@ export default async function Admin() {
           headingColumn={item.name}
           columns={[item.email]}
           link={name.singular}
+          destroy={destroy}
         />
       ))}
     </List>

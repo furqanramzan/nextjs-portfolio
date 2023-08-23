@@ -1,6 +1,6 @@
 'use client';
 
-import { upsertService } from '@/app/admin/auth/service/actions';
+import { upsert } from '@/app/admin/auth/service/actions';
 import Upsert from '@/app/admin/auth/components/Upsert';
 import { upsertServiceSchema } from '@/app/admin/auth/service/validations';
 import Input from '@/components/Input';
@@ -13,7 +13,7 @@ interface Props {
 
 export default function Form({ item }: Props) {
   const { submitting, errors, submit } = useSubmitForm({
-    callback: upsertService,
+    callback: upsert,
     schema: upsertServiceSchema,
   });
 

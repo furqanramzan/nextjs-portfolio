@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import DestroyButton, { type DestroyCallback } from './DestroyButton';
 
 interface Props {
   link: string;
@@ -7,6 +8,7 @@ interface Props {
   headingColumn: string | number;
   columns: Array<string | number>;
   children?: ReactNode;
+  destroy?: DestroyCallback;
 }
 
 export default function Row({
@@ -15,6 +17,7 @@ export default function Row({
   children,
   itemId,
   link,
+  destroy,
 }: Props) {
   return (
     <tr className="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
@@ -37,6 +40,7 @@ export default function Row({
         >
           Edit
         </Link>
+        {destroy && <DestroyButton destroy={destroy} itemId={itemId} />}
       </td>
     </tr>
   );

@@ -14,14 +14,14 @@ import {
 import { throwIfNotFound } from '@/utils/errors';
 import { validate } from '@/utils/validate';
 
-export async function getItems(params?: GetItems) {
-  const items = await getRepository('service').getMany(
-    formatListParams(params),
-  );
+const repository = getRepository('service');
+
+export async function get(params?: GetItems) {
+  const items = await repository.getMany(formatListParams(params));
   return formatListResponse(items);
 }
 
-export async function upsertService(inputs: UpsertServiceSchema) {
+export async function upsert(inputs: UpsertServiceSchema) {
   const parse = await validate(inputs, upsertServiceSchema);
   if (!parse.validated) {
     const { errors } = parse;
@@ -39,4 +39,8 @@ export async function upsertService(inputs: UpsertServiceSchema) {
   }
 
   redirect('/admin/auth/service');
+}
+
+export async function destroy(id: number) {
+  return throwIfNotFound(await repository.destroy(id));
 }

@@ -9,13 +9,16 @@ import {
   formatListParams,
   formatListResponse,
 } from '@/utils/get-many';
+import { throwIfNotFound } from '@/utils/errors';
 
-export async function getItems(params?: GetItems) {
-  const items = await getRepository('admin').getMany(formatListParams(params));
+const repository = getRepository('admin');
+
+export async function get(params?: GetItems) {
+  const items = await repository.getMany(formatListParams(params));
   return formatListResponse(items);
 }
 
-export async function upsertAdmin(inputs: UpsertAdminSchema) {
+export async function upsert(inputs: UpsertAdminSchema) {
   const result = await upsertAdminHandler(inputs);
 
   if (result.data) {
@@ -23,4 +26,8 @@ export async function upsertAdmin(inputs: UpsertAdminSchema) {
   } else {
     return result;
   }
+}
+
+export async function destroy(id: number) {
+  return throwIfNotFound(await repository.destroy(id));
 }
