@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from 'react';
-import type { ZodType, z } from 'zod';
+import type { ZodType } from 'zod';
 import { type FieldErrors, validate } from '../utils/validate';
+import promise from '@/utils/promise';
 
 interface CallbackResponse<TRequest, TResponse> {
   data?: TResponse;
@@ -8,7 +9,7 @@ interface CallbackResponse<TRequest, TResponse> {
   message?: string;
 }
 type Callback<TRequest, TResponse> = (
-  data: z.infer<ZodType<TRequest>>,
+  data: FormData,
 ) => Promise<CallbackResponse<TRequest, TResponse> | undefined>;
 
 interface FormOptions<TRequest, TResponse> {
@@ -30,22 +31,21 @@ export function useSubmitForm<TRequest, TResponse>({
     setSubmitting(true);
 
     const formData = new FormData(event.currentTarget);
-    const formDataEntries = Object.fromEntries(formData.entries());
 
-    const validateData = await validate(formDataEntries, schema);
+    const validateData = await validate(formData, schema);
 
     if (!validateData.validated) {
       setErrors(validateData.errors);
     } else {
       setErrors({});
-      const response = await callback(validateData.data);
+      const response = await promise(() => callback(formData));
 
-      if (response) {
+      if (response.success && response.data) {
         const {
           message: responseMessage,
           data: responseData,
           errors: responseErrors,
-        } = response;
+        } = response.data;
 
         if (responseMessage) {
           setMessage(responseMessage);

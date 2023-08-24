@@ -1,11 +1,10 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import type { UpsertAdminSchema } from '@/app/admin/validation';
 import { upsertAdmin as upsertAdminHandler } from '@/app/admin/upsert-admin';
 import { getRepository } from '@/repositories';
 
-export async function upsertAdmin(inputs: UpsertAdminSchema) {
+export async function upsertAdmin(inputs: FormData) {
   await isAdminExists();
 
   const result = await upsertAdminHandler(inputs);

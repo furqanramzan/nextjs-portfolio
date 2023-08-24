@@ -1,19 +1,17 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { services } from './dummy';
 import { getRepository } from '@/repositories';
-import {
-  type UpsertServiceSchema,
-  upsertServiceSchema,
-} from '@/app/admin/auth/service/validations';
+import { upsertServiceSchema as schema } from '@/app/admin/auth/service/validations';
 import {
   type GetItems,
   formatListParams,
   formatListResponse,
 } from '@/utils/get-many';
 import { throwIfNotFound } from '@/utils/errors';
-import { validate } from '@/utils/validate';
-import { services } from '@/dummy/service';
+import { fileValidation, validate } from '@/utils/validate.server';
+import { uploadFile } from '@/utils/filesystem';
 
 const repository = getRepository('service');
 
@@ -22,21 +20,25 @@ export async function get(params?: GetItems) {
   return formatListResponse(items);
 }
 
-export async function upsert(inputs: UpsertServiceSchema) {
-  const parse = await validate(inputs, upsertServiceSchema);
+const upsertServiceSchema = schema.extend({
+  icon: fileValidation(1),
+});
+export async function upsert(params: FormData) {
+  const parse = await validate(params, upsertServiceSchema);
   if (!parse.validated) {
     const { errors } = parse;
     return { errors };
   }
+  const inputs = parse.data;
 
-  const repository = getRepository('service');
+  const icon = await uploadFile(inputs.icon, 'one');
 
   if (inputs.id) {
     const { id, ...values } = inputs;
-    const result = await repository.update(values, id);
+    const result = await repository.update({ ...values, icon }, id);
     throwIfNotFound(result);
   } else {
-    await repository.create(inputs);
+    await repository.create({ ...inputs, icon });
   }
 
   redirect('/admin/auth/service');

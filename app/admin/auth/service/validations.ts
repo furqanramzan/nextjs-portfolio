@@ -1,4 +1,3 @@
-import type { z } from 'zod';
 import { coerce, object, string } from 'zod';
 
 export const upsertServiceSchema = object({
@@ -7,5 +6,3 @@ export const upsertServiceSchema = object({
   description: string().min(1).max(256).trim(),
   icon: string().min(1).trim(),
 });
-
-export type UpsertServiceSchema = z.infer<typeof upsertServiceSchema>;

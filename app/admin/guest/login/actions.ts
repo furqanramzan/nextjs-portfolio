@@ -1,14 +1,14 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { type LoginSchema, loginSchema } from './validation';
+import { loginSchema } from './validation';
 import { getRepository } from '@/repositories';
 import { validate } from '@/utils/validate';
 import { hash } from '@/utils/hash';
 import { jwt } from '@/utils/jwt';
 import { setToken } from '@/app/admin/token';
 
-export async function login(inputs: LoginSchema) {
+export async function login(inputs: FormData) {
   const parse = await validate(inputs, loginSchema);
   if (!parse.validated) {
     const { errors } = parse;

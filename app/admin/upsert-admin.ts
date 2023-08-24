@@ -2,7 +2,6 @@ import { validate } from '@/utils/validate';
 import { getRepository } from '@/repositories';
 import { throwIfNotFound } from '@/utils/errors';
 import { hash } from '@/utils/hash';
-import type { UpsertAdminSchema } from '@/app/admin/validation';
 import { upsertAdminSchema as schema } from '@/app/admin/validation';
 
 const upsertAdminSchema = schema
@@ -15,7 +14,7 @@ const upsertAdminSchema = schema
     path: ['email'],
   });
 
-export async function upsertAdmin(inputs: UpsertAdminSchema) {
+export async function upsertAdmin(inputs: FormData) {
   const parse = await validate(inputs, upsertAdminSchema);
   if (!parse.validated) {
     const { errors } = parse;
@@ -25,7 +24,7 @@ export async function upsertAdmin(inputs: UpsertAdminSchema) {
   const repository = getRepository('admin');
   let data: Awaited<ReturnType<typeof repository.create>>;
 
-  const { id, password, ...values } = inputs;
+  const { id, password, ...values } = parse.data;
 
   if (id) {
     const result = await repository.update(values, id);

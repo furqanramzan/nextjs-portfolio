@@ -2,7 +2,6 @@
 
 import { redirect } from 'next/navigation';
 import { getRepository } from '@/repositories';
-import type { UpsertAdminSchema } from '@/app/admin/validation';
 import { upsertAdmin as upsertAdminHandler } from '@/app/admin/upsert-admin';
 import {
   type GetItems,
@@ -18,7 +17,7 @@ export async function get(params?: GetItems) {
   return formatListResponse(items);
 }
 
-export async function upsert(inputs: UpsertAdminSchema) {
+export async function upsert(inputs: FormData) {
   const result = await upsertAdminHandler(inputs);
 
   if (result.data) {
