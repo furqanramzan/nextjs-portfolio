@@ -61,11 +61,11 @@ export default function Input({ input, className }: Props) {
   const errors = input.errors || [];
   const hasError = errors.length > 0;
   const rows = input.rows || 5;
-  className = `block w-full rounded-lg border p-2.5 text-sm ${
+  className = `block w-full rounded-lg border text-sm ${
     hasError
       ? 'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-500 dark:bg-gray-700 dark:text-red-500 dark:placeholder-red-500'
       : 'border-gray-300 bg-gray-50 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500'
-  } ${className}`;
+  } ${className} ${type === 'file' ? 'cursor-pointer' : ' p-2.5'}`;
 
   function inputTag() {
     return (

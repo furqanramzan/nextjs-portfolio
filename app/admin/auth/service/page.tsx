@@ -1,4 +1,5 @@
 import { destroy, dummy, get } from './actions';
+import Image from '@/components/Image';
 import List from '@/components/list/List';
 import Row from '@/components/list/Row';
 
@@ -24,7 +25,16 @@ export default async function Service() {
           destroy={destroy}
         >
           <td className="px-6 py-4">
-            <span dangerouslySetInnerHTML={{ __html: item.icon }}></span>
+            <a href={item.icon} target="_blank">
+              <Image
+                loading="lazy"
+                width="32"
+                height="32"
+                className="rounded-md"
+                src={item.icon}
+                alt={item.title}
+              />
+            </a>
           </td>
         </Row>
       ))}

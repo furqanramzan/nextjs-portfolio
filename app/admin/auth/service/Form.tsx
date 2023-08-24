@@ -53,8 +53,8 @@ export default function Form({ item }: Props) {
         <Input
           input={{
             name: 'icon',
+            type: 'file',
             errors: errors.icon,
-            value: item?.icon,
           }}
         />
       </div>
