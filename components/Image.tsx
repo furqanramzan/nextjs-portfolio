@@ -1,8 +1,12 @@
-export default function Image(props: JSX.IntrinsicElements['img']) {
+export type Props = Omit<JSX.IntrinsicElements['img'], 'src'> & {
+  src: string | null;
+};
+
+export default function Image({ src, ...props }: Props) {
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-      <img {...props} />
+      {src && <img src={src} {...props} />}
     </>
   );
 }
