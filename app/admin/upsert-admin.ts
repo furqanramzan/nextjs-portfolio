@@ -1,4 +1,4 @@
-import { validate } from '@/utils/validate';
+import { validate } from '@/utils/validate.server';
 import { getRepository } from '@/utils/repository';
 import { throwIfNotFound } from '@/utils/errors';
 import { hash } from '@/utils/hash';
