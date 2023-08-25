@@ -11,7 +11,7 @@ import {
 } from '@/utils/get-many';
 import { throwIfNotFound } from '@/utils/errors';
 import { fileValidation, validate } from '@/utils/validate.server';
-import { uploadFile } from '@/utils/filesystem';
+import { deleteFile, uploadFile } from '@/utils/filesystem';
 
 const repository = getRepository('service');
 
@@ -31,23 +31,35 @@ export async function upsert(params: FormData) {
   }
   const inputs = parse.data;
 
-  const icon = await uploadFile(inputs.icon, 'one');
+  const { id, icon, ...values } = inputs;
+  const data: Parameters<typeof repository.create>[0] = values;
+  if (icon) {
+    data.icon = await uploadFile(icon, 'one');
+  }
 
-  if (inputs.id) {
-    const { id, ...values } = inputs;
-    const result = await repository.update({ ...values, icon }, id);
+  if (id) {
+    if (icon) {
+      await deleteIcon(id);
+    }
+    const result = await repository.update(data, id);
     throwIfNotFound(result);
   } else {
-    await repository.create({ ...inputs, icon });
+    await repository.create(data);
   }
 
   redirect('/admin/auth/service');
 }
 
 export async function destroy(id: number) {
+  await deleteIcon(id);
   return throwIfNotFound(await repository.destroy(id));
 }
 
 export async function dummy() {
   await services();
+}
+
+async function deleteIcon(id: number) {
+  const { icon: iconKey } = throwIfNotFound(await repository.getOne(id));
+  await deleteFile(iconKey);
 }

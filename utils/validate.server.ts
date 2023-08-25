@@ -42,13 +42,20 @@ function getFormEntries(formData: FormData) {
   const entries: Record<string, unknown> = {};
   for (const key of formData.keys()) {
     const data = formData.getAll(key);
-    entries[key] =
-      data.length === 1 && !(data.at(0) instanceof File) ? data.at(0) : data;
+
+    if (typeof data.at(0) === 'string') {
+      entries[key] = data.length === 1 ? data.at(0) : data;
+    } else {
+      const files = data.filter((x) => (x as unknown as File).size > 0);
+      if (files.length > 0) {
+        entries[key] = files;
+      }
+    }
   }
+
   return entries;
 }
 
-export function fileValidation(min: number = 1, max?: number) {
-  max ??= min;
-  return array(zodInstanceof(File)).min(min).max(max);
+export function fileValidation(max: number = -1) {
+  return array(zodInstanceof(File)).max(max).optional();
 }

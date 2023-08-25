@@ -63,7 +63,7 @@ export default function Form({ item }: Props) {
             type: 'password',
             placeholder: '••••••••',
             autoComplete: 'new-password',
-            required: item === undefined,
+            required: !item,
             errors: errors.password,
           }}
         />

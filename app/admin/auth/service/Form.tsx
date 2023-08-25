@@ -59,6 +59,7 @@ export default function Form({ item }: Props) {
           input={{
             name: 'icon',
             type: 'file',
+            required: !item,
             errors: errors.icon,
           }}
         />

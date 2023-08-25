@@ -1,7 +1,6 @@
 import {
   bigint,
   serial,
-  text,
   timestamp,
   uniqueIndex,
   varchar,
@@ -46,7 +45,7 @@ export const services = mysqlTable('services', {
   id: serial('id').primaryKey(),
   title: varchar('title', { length: 256 }).notNull(),
   description: varchar('description', { length: 256 }).notNull(),
-  icon: text('icon').notNull(),
+  icon: varchar('icon', { length: 256 }),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
