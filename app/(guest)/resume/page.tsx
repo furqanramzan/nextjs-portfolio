@@ -8,20 +8,10 @@ function getExperiences() {
   return getRepository('experience').getMany();
 }
 
-const workSkills = [
-  { title: 'NEXT.js' },
-  { title: 'React.js' },
-  { title: 'HTML 5' },
-  { title: 'CSS 3' },
-  { title: 'Tailwind CSS' },
-  { title: 'Figma' },
-  { title: 'JavaScript' },
-  { title: 'Mongo DB' },
-  { title: 'SQL' },
-  { title: 'Angular' },
-  { title: 'Android' },
-  { title: 'Git' },
-];
+function getWorkSkills() {
+  return getRepository('workSkill').getMany();
+}
+
 const softSkills = [
   { title: 'Time Management' },
   { title: 'Mentorship' },
@@ -34,6 +24,7 @@ const softSkills = [
 export default async function Resume() {
   const { items: educations } = await getEducations();
   const { items: experiences } = await getExperiences();
+  const { items: workSkills } = await getWorkSkills();
 
   return (
     <div className="flex w-full flex-col gap-8">
