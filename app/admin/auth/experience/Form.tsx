@@ -1,15 +1,18 @@
 'use client';
 
 import type { Experience } from './repository';
-import { upsert } from '@/app/admin/auth/experience/actions';
+import { upsert } from './actions';
+import { upsertExperienceSchema } from './validations';
 import Upsert from '@/app/admin/auth/components/Upsert';
-import { upsertExperienceSchema } from '@/app/admin/auth/experience/validations';
 import Input from '@/components/Input';
 import { useSubmitForm } from '@/hooks/submit-form';
+import { names } from '@/utils/names';
 
 interface Props {
   item?: Experience;
 }
+
+const { singularName, pluralName, href } = names('experience');
 
 export default function Form({ item }: Props) {
   const { submitting, errors, submit } = useSubmitForm({
@@ -20,7 +23,9 @@ export default function Form({ item }: Props) {
   return (
     <Upsert
       onSubmit={submit}
-      name={{ singular: 'experience' }}
+      singularName={singularName}
+      pluralName={pluralName}
+      href={href}
       submitting={submitting}
     >
       <Input

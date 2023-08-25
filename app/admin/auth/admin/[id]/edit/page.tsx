@@ -1,5 +1,5 @@
+import Form from '../../Form';
 import { getRepository } from '@/utils/repository';
-import Form from '@/app/admin/auth/admin/Form';
 
 interface Props {
   params: { id: string };

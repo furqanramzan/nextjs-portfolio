@@ -1,15 +1,18 @@
 'use client';
 
 import type { Education } from './repository';
-import { upsert } from '@/app/admin/auth/education/actions';
+import { upsert } from './actions';
+import { upsertEducationSchema } from './validations';
 import Upsert from '@/app/admin/auth/components/Upsert';
-import { upsertEducationSchema } from '@/app/admin/auth/education/validations';
 import Input from '@/components/Input';
 import { useSubmitForm } from '@/hooks/submit-form';
+import { names } from '@/utils/names';
 
 interface Props {
   item?: Education;
 }
+
+const { singularName, pluralName, href } = names('education');
 
 export default function Form({ item }: Props) {
   const { submitting, errors, submit } = useSubmitForm({
@@ -20,7 +23,9 @@ export default function Form({ item }: Props) {
   return (
     <Upsert
       onSubmit={submit}
-      name={{ singular: 'education' }}
+      singularName={singularName}
+      pluralName={pluralName}
+      href={href}
       submitting={submitting}
     >
       <Input

@@ -1,8 +1,9 @@
 import { destroy, dummy, get } from './actions';
 import List from '@/components/list/List';
 import Row from '@/components/list/Row';
+import { names } from '@/utils/names';
 
-const name = { singular: 'education' };
+const { singularName, pluralName, href } = names('education');
 
 export default async function Education() {
   const { items } = await get();
@@ -10,7 +11,9 @@ export default async function Education() {
   return (
     <List
       items={items}
-      name={name}
+      singularName={singularName}
+      pluralName={pluralName}
+      href={href}
       columns={['Title', 'Institute', 'Year']}
       dummy={dummy}
     >
@@ -20,7 +23,7 @@ export default async function Education() {
           itemId={item.id}
           headingColumn={item.title}
           columns={[item.institute, item.year]}
-          link={name.singular}
+          href={href}
           destroy={destroy}
         />
       ))}

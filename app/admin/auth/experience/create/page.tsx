@@ -1,4 +1,4 @@
-import Form from '@/app/admin/auth/experience/Form';
+import Form from '../Form';
 
 export default function ExperienceCreate() {
   return <Form />;

@@ -1,4 +1,4 @@
-import Form from '@/app/admin/auth/service/Form';
+import Form from '../Form';
 
 export default function ServiceCreate() {
   return <Form />;

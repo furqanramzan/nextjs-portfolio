@@ -5,31 +5,34 @@ import NoDataRow from './NoDataRow';
 import { DEV } from '@/utils/constants';
 
 interface Props {
-  name: { plural?: string; singular: string };
   columns: string[];
   items: Record<string, unknown>[];
   dummy?: DummyCallback;
+  singularName: string;
+  pluralName: string;
+  href: string;
   children: ReactNode;
 }
 
-export default function List({ name, columns, items, dummy, children }: Props) {
-  if (!name.plural) {
-    name.plural = `${name.singular}s`;
-  }
-
+export default function List({
+  singularName,
+  pluralName,
+  href,
+  columns,
+  items,
+  dummy,
+  children,
+}: Props) {
   return (
     <div className="relative flex flex-col gap-y-5 overflow-x-auto">
       <div className="flex flex-col items-center justify-between space-y-3 md:flex-row md:space-x-4 md:space-y-0">
         <h1 className="mb-0 bg-white text-3xl font-bold text-gray-900 dark:bg-gray-800 dark:text-white">
-          All {name.plural}
+          All {pluralName}
         </h1>
 
         <div className="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0">
           {DEV && dummy && <DummyDataButton dummy={dummy} />}
-          <AddLink
-            href={`/admin/auth/${name.singular}/create`}
-            name={name.singular}
-          />
+          <AddLink href={`/admin/auth/${href}/create`} name={singularName} />
         </div>
       </div>
 

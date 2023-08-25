@@ -2,8 +2,9 @@ import { destroy, dummy, get } from './actions';
 import Image from '@/components/Image';
 import List from '@/components/list/List';
 import Row from '@/components/list/Row';
+import { names } from '@/utils/names';
 
-const name = { singular: 'service' };
+const { singularName, pluralName, href } = names('service');
 
 export default async function Service() {
   const { items } = await get();
@@ -11,7 +12,9 @@ export default async function Service() {
   return (
     <List
       items={items}
-      name={name}
+      singularName={singularName}
+      pluralName={pluralName}
+      href={href}
       columns={['Title', 'Description', 'Icon']}
       dummy={dummy}
     >
@@ -21,7 +24,7 @@ export default async function Service() {
           itemId={item.id}
           headingColumn={item.title}
           columns={[item.description]}
-          link={name.singular}
+          href={href}
           destroy={destroy}
         >
           <td className="px-6 py-4">

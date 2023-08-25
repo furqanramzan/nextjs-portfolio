@@ -1,4 +1,4 @@
-import Form from '@/app/admin/auth/education/Form';
+import Form from '../Form';
 
 export default function EducationCreate() {
   return <Form />;

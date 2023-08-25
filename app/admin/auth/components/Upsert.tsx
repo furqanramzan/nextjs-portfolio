@@ -8,18 +8,22 @@ type Enctype =
   | 'multipart/form-data'
   | 'text/plain';
 interface Props {
-  name: { plural?: string; singular: string };
   /**
    * @default text/plain
    */
   enctype?: Enctype;
   submitting: boolean;
+  singularName: string;
+  pluralName: string;
+  href: string;
   children: ReactNode;
   onSubmit: (e: FormEvent<HTMLFormElement>) => unknown;
 }
 
 export default function Upsert({
-  name,
+  singularName,
+  pluralName,
+  href,
   enctype,
   submitting,
   children,
@@ -28,24 +32,21 @@ export default function Upsert({
   if (!enctype) {
     enctype = 'text/plain';
   }
-  if (!name.plural) {
-    name.plural = `${name.singular}s`;
-  }
 
   return (
     <div className="flex flex-col gap-y-5">
       <h1 className="mb-0 bg-white text-3xl font-bold text-gray-900 dark:bg-gray-800 dark:text-white">
-        Add a new {name.singular}
+        Add a new {singularName}
       </h1>
 
       <form encType={enctype} method="post" onSubmit={onSubmit}>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">{children}</div>
         <div className="mt-4 flex gap-x-3 sm:mt-6">
           <SubmitButton submitting={submitting}>
-            Add {name.singular}
+            Add {singularName}
           </SubmitButton>
-          <Link href={`/admin/auth/${name.singular}`}>
-            <LightButton content={`All ${name.plural}`} />
+          <Link href={`/admin/auth/${href}`}>
+            <LightButton content={`All ${pluralName}`} />
           </Link>
         </div>
       </form>

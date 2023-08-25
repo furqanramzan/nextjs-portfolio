@@ -1,15 +1,18 @@
 'use client';
 
 import type { Admin } from './repository';
-import { upsert } from '@/app/admin/auth/admin/actions';
+import { upsert } from './actions';
 import Upsert from '@/app/admin/auth/components/Upsert';
 import { upsertAdminSchema } from '@/app/admin/validations';
 import Input from '@/components/Input';
 import { useSubmitForm } from '@/hooks/submit-form';
+import { names } from '@/utils/names';
 
 interface Props {
   item?: Admin;
 }
+
+const { singularName, pluralName, href } = names('admin');
 
 export default function Form({ item }: Props) {
   const { submitting, errors, submit } = useSubmitForm({
@@ -20,7 +23,9 @@ export default function Form({ item }: Props) {
   return (
     <Upsert
       onSubmit={submit}
-      name={{ singular: 'admin' }}
+      singularName={singularName}
+      pluralName={pluralName}
+      href={href}
       submitting={submitting}
     >
       <Input
