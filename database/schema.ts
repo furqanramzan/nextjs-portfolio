@@ -81,3 +81,12 @@ export const softSkills = mysqlTable('soft_skills', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
+
+export const projects = mysqlTable('projects', {
+  id: serial('id').primaryKey(),
+  title: varchar('title', { length: 256 }).notNull(),
+  category: varchar('category', { length: 256 }).notNull(),
+  image: varchar('image', { length: 256 }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});

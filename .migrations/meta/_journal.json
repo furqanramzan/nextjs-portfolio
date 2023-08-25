@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1692723409918,
-      "tag": "0000_stale_dakota_north",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1692951618327,
-      "tag": "0001_melted_golden_guardian",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1692959391273,
-      "tag": "0002_omniscient_romulus",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1692960811166,
-      "tag": "0003_aberrant_hemingway",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1692963550181,
-      "tag": "0004_charming_captain_stacy",
+      "when": 1692974882875,
+      "tag": "0000_workable_stellaris",
       "breakpoints": true
     }
   ]

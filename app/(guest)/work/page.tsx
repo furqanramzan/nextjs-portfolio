@@ -1,21 +1,20 @@
-import Image from 'next/image';
+import Image from '@/components/Image';
+import { getRepository } from '@/utils/repository';
 
-const projects = [
-  {
-    title: 'Smart Bank App',
-    category: 'App Development',
-    image: '/projects/project-1.png',
-  },
-];
+function getProjects() {
+  return getRepository('project').getMany();
+}
 
-export default function Work() {
+export default async function Work() {
+  const { items: projects } = await getProjects();
+
   return (
     <div className="flex w-full flex-col gap-8">
       <h2 className="text-5xl font-medium">PORTFOLIO</h2>
       <div className="grid gap-8 md:grid-cols-2">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <div
-            key={index}
+            key={project.id}
             className="flex flex-col rounded-xl bg-primary-200 p-3 text-black hover:shadow-2xl"
           >
             <Image

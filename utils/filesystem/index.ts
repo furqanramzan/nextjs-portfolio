@@ -9,10 +9,16 @@ if (env.FILESYSTEM_DISK === 'S3') {
   filesystem = sThree;
 }
 
-const resizes: Record<'service', ResizeOptions> = {
+const resizes: Record<'service' | 'project', ResizeOptions> = {
   service: {
     width: 32,
     height: 32,
+    fit: 'contain',
+    background: { r: 0, g: 0, b: 0, alpha: 0 },
+  },
+  project: {
+    width: 340,
+    height: 205,
     fit: 'contain',
     background: { r: 0, g: 0, b: 0, alpha: 0 },
   },
