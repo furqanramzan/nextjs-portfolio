@@ -1,11 +1,11 @@
 'use client';
 
+import type { Admin } from './repository';
 import { upsert } from '@/app/admin/auth/admin/actions';
 import Upsert from '@/app/admin/auth/components/Upsert';
-import { upsertAdminSchema } from '@/app/admin/validation';
+import { upsertAdminSchema } from '@/app/admin/validations';
 import Input from '@/components/Input';
 import { useSubmitForm } from '@/hooks/submit-form';
-import type { Admin } from '@/repositories/admin-repository';
 
 interface Props {
   item?: Admin;

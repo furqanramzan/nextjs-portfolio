@@ -1,7 +1,7 @@
 'use client';
 
 import { upsertAdmin } from './actions';
-import { upsertAdminSchema } from '@/app/admin/validation';
+import { upsertAdminSchema } from '@/app/admin/validations';
 import Input from '@/components/Input';
 import SubmitButton from '@/components/SubmitButton';
 import { useSubmitForm } from '@/hooks/submit-form';

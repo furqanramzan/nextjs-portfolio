@@ -1,7 +1,7 @@
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 import { uploadSharp } from '@/utils/filesystem';
 
 const serviceData = [

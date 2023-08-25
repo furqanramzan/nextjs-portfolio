@@ -1,5 +1,5 @@
 import { type InferModel, eq } from 'drizzle-orm';
-import { BaseRepository } from './base-repository';
+import { BaseRepository } from '@/utils/repository/base';
 import { adminPasswords } from '@/database/schema';
 
 type AdminPassword = typeof adminPasswords;

@@ -1,4 +1,4 @@
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 
 const educationData = [
   {

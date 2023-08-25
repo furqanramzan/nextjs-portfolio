@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { services } from './dummy';
 import { upsertServiceSchema as schema } from './validations';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 import {
   type GetItems,
   formatListParams,

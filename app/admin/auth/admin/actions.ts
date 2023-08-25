@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 import { upsertAdmin as upsertAdminHandler } from '@/app/admin/upsert-admin';
 import {
   type GetItems,

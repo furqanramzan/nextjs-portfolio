@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { upsertAdmin as upsertAdminHandler } from '@/app/admin/upsert-admin';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 
 export async function upsertAdmin(inputs: FormData) {
   await isAdminExists();

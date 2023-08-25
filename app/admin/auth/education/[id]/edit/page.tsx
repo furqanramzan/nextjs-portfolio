@@ -1,4 +1,4 @@
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 import Form from '@/app/admin/auth/education/Form';
 
 interface Props {

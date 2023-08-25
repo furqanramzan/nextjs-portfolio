@@ -1,7 +1,7 @@
-import { AdminRepository } from './admin-repository';
-import { AdminPasswordRepository } from './admin-password-repository';
-import { ServiceRepository } from './service-repository';
-import { EducationRepository } from './education-repository';
+import { AdminPasswordRepository } from '@/app/admin/auth/admin/password-repository';
+import { ServiceRepository } from '@/app/admin/auth/service/repository';
+import { EducationRepository } from '@/app/admin/auth/education/repository';
+import { AdminRepository } from '@/app/admin/auth/admin/repository';
 
 const repositories = {
   admin: new AdminRepository(),

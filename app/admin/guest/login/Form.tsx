@@ -1,7 +1,7 @@
 'use client';
 
 import { login } from './actions';
-import { loginSchema } from './validation';
+import { loginSchema } from './validations';
 import Input from '@/components/Input';
 import ErrorAlert from '@/components/ErrorAlert';
 import SubmitButton from '@/components/SubmitButton';

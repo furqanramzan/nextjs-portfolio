@@ -1,11 +1,11 @@
 'use client';
 
+import type { Education } from './repository';
 import { upsert } from '@/app/admin/auth/education/actions';
 import Upsert from '@/app/admin/auth/components/Upsert';
 import { upsertEducationSchema } from '@/app/admin/auth/education/validations';
 import Input from '@/components/Input';
 import { useSubmitForm } from '@/hooks/submit-form';
-import type { Education } from '@/repositories/education-repository';
 
 interface Props {
   item?: Education;

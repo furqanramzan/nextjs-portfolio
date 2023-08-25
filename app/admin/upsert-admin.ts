@@ -1,8 +1,8 @@
 import { validate } from '@/utils/validate';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 import { throwIfNotFound } from '@/utils/errors';
 import { hash } from '@/utils/hash';
-import { upsertAdminSchema as schema } from '@/app/admin/validation';
+import { upsertAdminSchema as schema } from '@/app/admin/validations';
 
 const upsertAdminSchema = schema
   .refine(({ id, password }) => Boolean(password || id), {

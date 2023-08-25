@@ -1,14 +1,14 @@
 import { type InferModel, eq } from 'drizzle-orm';
-import { BaseRepository } from './base-repository';
-import { services } from '@/database/schema';
+import { BaseRepository } from '@/utils/repository/base';
+import { educations } from '@/database/schema';
 
-type Services = typeof services;
-export type Service = InferModel<Services, 'select'>;
-type Create = InferModel<Services, 'insert'>;
+type Educations = typeof educations;
+export type Education = InferModel<Educations, 'select'>;
+type Create = InferModel<Educations, 'insert'>;
 
-export class ServiceRepository extends BaseRepository<Services> {
+export class EducationRepository extends BaseRepository<Educations> {
   constructor() {
-    super(services);
+    super(educations);
   }
 
   async create(values: Create) {

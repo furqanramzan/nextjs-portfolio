@@ -1,5 +1,5 @@
 import Image from '@/components/Image';
-import { getRepository } from '@/repositories';
+import { getRepository } from '@/utils/repository';
 
 function getServices() {
   return getRepository('service').getMany();

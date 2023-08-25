@@ -1,8 +1,8 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { loginSchema } from './validation';
-import { getRepository } from '@/repositories';
+import { loginSchema } from './validations';
+import { getRepository } from '@/utils/repository';
 import { validate } from '@/utils/validate';
 import { hash } from '@/utils/hash';
 import { jwt } from '@/utils/jwt';
