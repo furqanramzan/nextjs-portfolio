@@ -26,6 +26,10 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
       name: 'Work Skills',
       href: '/admin/auth/work-skill',
     },
+    {
+      name: 'Soft Skills',
+      href: '/admin/auth/soft-skill',
+    },
   ];
 
   return (

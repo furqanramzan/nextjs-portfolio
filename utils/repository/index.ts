@@ -4,6 +4,7 @@ import { EducationRepository } from '@/app/admin/auth/education/repository';
 import { AdminRepository } from '@/app/admin/auth/admin/repository';
 import { ExperienceRepository } from '@/app/admin/auth/experience/repository';
 import { WorkSkillRepository } from '@/app/admin/auth/work-skill/repository';
+import { SoftSkillRepository } from '@/app/admin/auth/soft-skill/repository';
 
 const repositories = {
   admin: new AdminRepository(),
@@ -12,6 +13,7 @@ const repositories = {
   education: new EducationRepository(),
   experience: new ExperienceRepository(),
   workSkill: new WorkSkillRepository(),
+  softSkill: new SoftSkillRepository(),
 };
 
 type Repositories = typeof repositories;

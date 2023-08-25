@@ -12,19 +12,15 @@ function getWorkSkills() {
   return getRepository('workSkill').getMany();
 }
 
-const softSkills = [
-  { title: 'Time Management' },
-  { title: 'Mentorship' },
-  { title: 'Impeccable Communication' },
-  { title: 'Flexibility' },
-  { title: 'Research' },
-  { title: 'Writing' },
-];
+function getSoftSkills() {
+  return getRepository('softSkill').getMany();
+}
 
 export default async function Resume() {
   const { items: educations } = await getEducations();
   const { items: experiences } = await getExperiences();
   const { items: workSkills } = await getWorkSkills();
+  const { items: softSkills } = await getSoftSkills();
 
   return (
     <div className="flex w-full flex-col gap-8">
@@ -106,9 +102,9 @@ export default async function Resume() {
           <div className="grid gap-8">
             <h6 className="text-4xl font-medium">Work Skills</h6>
             <div className="flex flex-wrap gap-4">
-              {workSkills.map((skill, index) => (
+              {workSkills.map((skill) => (
                 <span
-                  key={index}
+                  key={skill.id}
                   className="rounded-xl bg-gray-100 px-4 py-2 hover:bg-primary-200  dark:bg-gray-900 dark:hover:bg-primary-800"
                 >
                   {skill.title}
@@ -121,9 +117,9 @@ export default async function Resume() {
           <div className="grid gap-8">
             <h6 className="text-4xl font-medium">Soft Skills</h6>
             <div className="flex flex-wrap gap-4">
-              {softSkills.map((skill, index) => (
+              {softSkills.map((skill) => (
                 <span
-                  key={index}
+                  key={skill.id}
                   className="rounded-xl bg-gray-100 px-4 py-2 hover:bg-primary-200  dark:bg-gray-900 dark:hover:bg-primary-800"
                 >
                   {skill.title}
