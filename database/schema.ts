@@ -59,3 +59,12 @@ export const educations = mysqlTable('educations', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
+
+export const experiences = mysqlTable('experiences', {
+  id: serial('id').primaryKey(),
+  title: varchar('title', { length: 256 }).notNull(),
+  institute: varchar('institute', { length: 256 }).notNull(),
+  year: varchar('year', { length: 256 }).notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
