@@ -38,7 +38,7 @@ export function useSubmitForm<TRequest, TResponse>({
       setErrors(validateData.errors);
     } else {
       setErrors({});
-      const response = await promise(() => callback(formData));
+      const response = await promise(() => callback(formData), true);
 
       if (response.success && response.data) {
         const {

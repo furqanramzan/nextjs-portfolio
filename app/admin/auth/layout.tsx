@@ -7,12 +7,16 @@ import Layout from '@/components/Layout';
 export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const links: LinkItem[] = [
     {
-      name: 'Admin',
+      name: 'Admins',
       href: '/admin/auth/admin',
     },
     {
-      name: 'Service',
+      name: 'Services',
       href: '/admin/auth/service',
+    },
+    {
+      name: 'Educations',
+      href: '/admin/auth/education',
     },
   ];
 

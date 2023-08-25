@@ -1,11 +1,13 @@
 import { AdminRepository } from './admin-repository';
 import { AdminPasswordRepository } from './admin-password-repository';
 import { ServiceRepository } from './service-repository';
+import { EducationRepository } from './education-repository';
 
 const repositories = {
   admin: new AdminRepository(),
-  service: new ServiceRepository(),
   adminPassword: new AdminPasswordRepository(),
+  service: new ServiceRepository(),
+  education: new EducationRepository(),
 };
 
 type Repositories = typeof repositories;

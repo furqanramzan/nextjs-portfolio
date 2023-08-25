@@ -21,9 +21,9 @@ export default async function Home() {
       </p>
       <h2 className="text-4xl font-medium">What I do!</h2>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div
-            key={index}
+            key={service.id}
             className="rounded-3xl bg-gray-100 p-6 hover:bg-primary-200  dark:bg-gray-900 dark:hover:bg-primary-800"
           >
             <h6 className="flex flex-wrap gap-x-3 text-2xl font-semibold">

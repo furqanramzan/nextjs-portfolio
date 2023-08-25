@@ -1,15 +1,9 @@
-const educations = [
-  {
-    year: '2020-2021',
-    title: 'Software Development',
-    institue: 'Moringa School',
-  },
-  {
-    year: '2012-2016',
-    title: 'Disaster Management',
-    institue: 'Masinde Muliro Universiity',
-  },
-];
+import { getRepository } from '@/repositories';
+
+function getEducations() {
+  return getRepository('education').getMany();
+}
+
 const experiences = [
   {
     year: '2022 - Present',
@@ -45,7 +39,9 @@ const softSkills = [
   { title: 'Writing' },
 ];
 
-export default function Resume() {
+export default async function Resume() {
+  const { items: educations } = await getEducations();
+
   return (
     <div className="flex w-full flex-col gap-8">
       <h2 className="text-5xl font-medium">RESUME</h2>
@@ -77,14 +73,14 @@ export default function Resume() {
               Education
             </h6>
             <div className="grid gap-5">
-              {educations.map((education, index) => (
+              {educations.map((education) => (
                 <div
-                  key={index}
+                  key={education.id}
                   className="rounded-xl bg-gray-100 p-6 hover:bg-primary-200  dark:bg-gray-900 dark:hover:bg-primary-800"
                 >
                   <p className="font-light">{education.year}</p>
                   <h6 className="font-semibold">{education.title}</h6>
-                  <p>{education.institue}</p>
+                  <p>{education.institute}</p>
                 </div>
               ))}
             </div>
