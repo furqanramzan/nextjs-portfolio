@@ -7,6 +7,7 @@ import { WorkSkillRepository } from '@/app/admin/auth/work-skill/repository';
 import { SoftSkillRepository } from '@/app/admin/auth/soft-skill/repository';
 import { ProjectRepository } from '@/app/admin/auth/project/repository';
 import { MessageRepository } from '@/app/admin/auth/message/repository';
+import { SettingRepository } from '@/app/admin/auth/setting/repository';
 
 const repositories = {
   admin: new AdminRepository(),
@@ -18,6 +19,7 @@ const repositories = {
   softSkill: new SoftSkillRepository(),
   project: new ProjectRepository(),
   message: new MessageRepository(),
+  setting: new SettingRepository(),
 };
 
 type Repositories = typeof repositories;

@@ -15,6 +15,13 @@
       "when": 1693047432404,
       "tag": "0001_brief_hobgoblin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693047648607,
+      "tag": "0002_abandoned_rhodey",
+      "breakpoints": true
     }
   ]
 }

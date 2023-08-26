@@ -100,3 +100,18 @@ export const messages = mysqlTable('messages', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
+
+export const settings = mysqlTable(
+  'settings',
+  {
+    id: serial('id').primaryKey(),
+    key: varchar('key', { length: 256 }).notNull(),
+    name: varchar('name', { length: 256 }).notNull(),
+    content: text('content').notNull(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (table) => ({
+    keyIdx: uniqueIndex('key_idx').on(table.key),
+  }),
+);

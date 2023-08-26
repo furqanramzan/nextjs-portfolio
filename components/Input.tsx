@@ -39,6 +39,7 @@ export interface InputItem {
    * @default 5
    */
   rows?: number;
+  disabled?: boolean;
 }
 
 interface Props {
@@ -82,6 +83,7 @@ export default function Input({ input, className }: Props) {
         autoComplete={input.autoComplete}
         className={className}
         type={type}
+        disabled={input.disabled}
       />
     );
   }
@@ -97,6 +99,7 @@ export default function Input({ input, className }: Props) {
         aria-invalid={hasError}
         autoComplete={input.autoComplete}
         className={className}
+        disabled={input.disabled}
       />
     );
   }
