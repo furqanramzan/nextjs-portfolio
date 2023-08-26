@@ -57,6 +57,8 @@ export function useSubmitForm<TRequest, TResponse>({
 
         if (responseErrors) {
           setErrors(responseErrors);
+        } else {
+          (event.target as HTMLFormElement).reset();
         }
       }
     }
