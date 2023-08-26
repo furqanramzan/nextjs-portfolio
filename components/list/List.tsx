@@ -10,7 +10,7 @@ interface Props {
   dummy?: DummyCallback;
   singularName: string;
   pluralName: string;
-  href: string;
+  href?: string;
   children: ReactNode;
 }
 
@@ -32,7 +32,9 @@ export default function List({
 
         <div className="flex w-full flex-shrink-0 flex-col items-stretch justify-end space-y-2 md:w-auto md:flex-row md:items-center md:space-x-3 md:space-y-0">
           {DEV && dummy && <DummyDataButton dummy={dummy} />}
-          <AddLink href={`/admin/auth/${href}/create`} name={singularName} />
+          {href && (
+            <AddLink href={`/admin/auth/${href}/create`} name={singularName} />
+          )}
         </div>
       </div>
 

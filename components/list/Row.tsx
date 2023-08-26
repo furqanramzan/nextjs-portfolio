@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import DestroyButton, { type DestroyCallback } from './DestroyButton';
 
 interface Props {
-  href: string;
+  href?: string;
   itemId: number;
   headingColumn: string | number;
   columns?: Array<string | number>;
@@ -35,12 +35,14 @@ export default function Row({
         ))}
       {children}
       <td className="flex justify-end gap-4 px-6 py-4">
-        <Link
-          href={`/admin/auth/${href}/${itemId}/edit`}
-          className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-        >
-          Edit
-        </Link>
+        {href && (
+          <Link
+            href={`/admin/auth/${href}/${itemId}/edit`}
+            className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+          >
+            Edit
+          </Link>
+        )}
         {destroy && <DestroyButton destroy={destroy} itemId={itemId} />}
       </td>
     </tr>
