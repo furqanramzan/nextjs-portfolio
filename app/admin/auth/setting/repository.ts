@@ -1,4 +1,4 @@
-import { type InferModel, eq } from 'drizzle-orm';
+import { type InferModel, eq, inArray } from 'drizzle-orm';
 import { BaseRepository } from '@/utils/repository/base';
 import { settings } from '@/database/schema';
 
@@ -24,5 +24,12 @@ export class SettingRepository extends BaseRepository<Settings> {
       .where(eq(this.table.id, id));
 
     return this.updateResponse(result, id);
+  }
+
+  getManyByKey<T extends Setting['key']>(keys: T[]) {
+    return this.drizzle.query.settings.findMany({
+      where: inArray(this.table.key, keys),
+      columns: { content: true, key: true },
+    });
   }
 }

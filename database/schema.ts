@@ -105,7 +105,21 @@ export const settings = mysqlTable(
   'settings',
   {
     id: serial('id').primaryKey(),
-    key: varchar('key', { length: 256 }).notNull(),
+    key: varchar('key', {
+      length: 256,
+      enum: [
+        'name',
+        'designation',
+        'about',
+        'phone',
+        'email',
+        'location',
+        'facebook',
+        'linkedin',
+        'twitter',
+        'github',
+      ],
+    }).notNull(),
     name: varchar('name', { length: 256 }).notNull(),
     content: text('content').notNull(),
     createdAt: timestamp('created_at').notNull().defaultNow(),

@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { notFound } from 'next/navigation';
 
 export async function GET(
-  request: Request,
+  _request: Request,
   context: { params: { key: string[] } },
 ) {
   const filePath = context.params.key.reduce(

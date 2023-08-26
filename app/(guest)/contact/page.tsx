@@ -1,9 +1,9 @@
 import Form from './Form';
+import { getSettings } from '@/utils/settings';
 
-const phones = [{ content: '+254723909353' }, { content: '+254738509151' }];
-const emails = [{ content: 'benjaminkamau@demo.demo' }];
+export default async function Contact() {
+  const settings = await getSettings(['phone', 'email']);
 
-export default function Contact() {
   return (
     <div className="flex w-full flex-col gap-8">
       <h2 className="text-5xl font-medium">CONTACT</h2>
@@ -29,9 +29,7 @@ export default function Contact() {
           <div className="flex flex-col gap-3">
             <h6 className="text-xl font-medium">Phone:</h6>
             <div>
-              {phones.map((phone, index) => (
-                <p key={index}>{phone.content}</p>
-              ))}
+              <p>{settings.phone}</p>
             </div>
           </div>
         </div>
@@ -52,9 +50,7 @@ export default function Contact() {
           <div className="flex flex-col gap-3">
             <h6 className="text-xl font-medium">Email:</h6>
             <div>
-              {emails.map((email, index) => (
-                <p key={index}>{email.content}</p>
-              ))}
+              <p>{settings.email}</p>
             </div>
           </div>
         </div>
