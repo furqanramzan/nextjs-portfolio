@@ -1,4 +1,4 @@
-import Input from '@/components/Input';
+import Form from './Form';
 
 const phones = [{ content: '+254723909353' }, { content: '+254738509151' }];
 const emails = [{ content: 'benjaminkamau@demo.demo' }];
@@ -65,22 +65,7 @@ export default function Contact() {
           <b>new projects, opportunities in tech world, partnerships</b> and
           more so <b>mentorship</b>.
         </p>
-        <Input input={{ name: 'name', placeholder: 'John Doe' }} />
-        <Input
-          input={{
-            name: 'email',
-            type: 'email',
-            placeholder: 'name@company.com',
-          }}
-        />
-        <Input
-          input={{
-            name: 'message',
-            type: 'textarea',
-            placeholder:
-              "I want to talk about the exciting new project I'd like you to build for me...",
-          }}
-        />
+        <Form />
       </div>
     </div>
   );

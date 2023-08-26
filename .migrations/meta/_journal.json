@@ -8,6 +8,13 @@
       "when": 1692974882875,
       "tag": "0000_workable_stellaris",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693047432404,
+      "tag": "0001_brief_hobgoblin",
+      "breakpoints": true
     }
   ]
 }

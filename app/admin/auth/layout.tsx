@@ -34,6 +34,10 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
       name: 'Projects',
       href: '/admin/auth/project',
     },
+    {
+      name: 'Messages',
+      href: '/admin/auth/message',
+    },
   ];
 
   return (

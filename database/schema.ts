@@ -1,6 +1,7 @@
 import {
   bigint,
   serial,
+  text,
   timestamp,
   uniqueIndex,
   varchar,
@@ -87,6 +88,15 @@ export const projects = mysqlTable('projects', {
   title: varchar('title', { length: 256 }).notNull(),
   category: varchar('category', { length: 256 }).notNull(),
   image: varchar('image', { length: 256 }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
+
+export const messages = mysqlTable('messages', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 256 }).notNull(),
+  email: varchar('email', { length: 256 }).notNull(),
+  message: text('message').notNull(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
 });
