@@ -73,9 +73,9 @@ const links = [
 
 export default function Header() {
   return (
-    <header className="flex justify-end">
-      <div className="rounded-3xl bg-gray-100 px-10 py-5 shadow-xl dark:bg-gray-800">
-        <ul className="flex gap-5">
+    <header className="flex justify-center sm:justify-end">
+      <div className="rounded-3xl bg-gray-100 px-5 py-2 shadow-xl dark:bg-gray-800 md:px-10 md:py-5">
+        <ul className="grid grid-cols-2 gap-5 sm:grid-cols-4">
           {links.map((link) => (
             <li key={link.title}>
               <HeaderLink link={link} />
