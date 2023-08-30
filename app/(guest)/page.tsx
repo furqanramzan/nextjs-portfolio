@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import Image from '@/components/Image';
 import { getRepository } from '@/utils/repository';
+import { getTitle } from '@/utils/title';
 
 function getServices() {
   return getRepository('service').getMany();
@@ -43,3 +45,9 @@ export default async function Home() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: getTitle(),
+  description:
+    'Coding solutions, from front-end finesse to back-end brilliance. Welcome to my full-stack developer portfolio.',
+};

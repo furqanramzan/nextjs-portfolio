@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import Form from './Form';
 import { getSettings } from '@/utils/settings';
+import { getTitle } from '@/utils/title';
 
 export default async function Contact() {
   const settings = await getSettings(['phone', 'email']);
@@ -66,3 +68,9 @@ export default async function Contact() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: getTitle('Contact'),
+  description:
+    "Let's connect! Whether you have a project in mind, questions about my work, or just want to say hello, this is the place to get in touch.",
+};

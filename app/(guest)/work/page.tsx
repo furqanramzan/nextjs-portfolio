@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import Image from '@/components/Image';
 import { getRepository } from '@/utils/repository';
+import { getTitle } from '@/utils/title';
 
 function getProjects() {
   return getRepository('project').getMany();
@@ -32,3 +34,9 @@ export default async function Work() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: getTitle('Work'),
+  description:
+    'Explore my journey through the world of web development on this page. From innovative projects to collaborative endeavors.',
+};

@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { getRepository } from '@/utils/repository';
+import { getTitle } from '@/utils/title';
 
 function getEducations() {
   return getRepository('education').getMany();
@@ -132,3 +134,9 @@ export default async function Resume() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: getTitle('Resume'),
+  description:
+    'Welcome to my resume page, where you can explore my professional journey as a full-stack developer. Discover my skills, experience, and qualifications.',
+};
