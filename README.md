@@ -61,3 +61,10 @@ pnpm run lint
 ## Deploying
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Credit
+
+**Figma Design**
+
+- Author: [Beatrice Wambui Mbugua](https://www.figma.com/@beatricewambui)
+- Source: [Link](https://www.figma.com/community/file/1264680769254941322/Portfolio-Design)
