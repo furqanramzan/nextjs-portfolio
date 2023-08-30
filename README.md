@@ -62,6 +62,10 @@ pnpm run lint
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## License
+
+Nextjs Portfolio is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 ## Credit
 
 **Figma Design**
