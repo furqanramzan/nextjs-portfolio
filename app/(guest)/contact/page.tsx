@@ -7,7 +7,7 @@ export default async function Contact() {
   return (
     <div className="flex w-full flex-col gap-8">
       <h2 className="text-5xl font-medium">CONTACT</h2>
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="flex gap-x-3 rounded-xl bg-gray-100 p-6  hover:bg-primary-200 dark:bg-gray-900 dark:hover:bg-primary-800">
           <span className="text-primary-600">
             <svg

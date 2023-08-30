@@ -7,8 +7,8 @@ export default function Logo() {
       <Image
         src="/logo.png"
         alt="Nextjs Portfolio"
-        width="168"
-        height="42"
+        width="252"
+        height="53"
         priority
       />
     </Link>
