@@ -29,15 +29,16 @@ export default async function Sidebar() {
         <h1 className="mt-5 text-2xl font-bold dark:text-white lg:mt-20">
           {settings.name}
         </h1>
-        <h6 className="text-lg font-medium text-gray-500 dark:text-white">
+        <h4 className="text-lg font-medium text-gray-500 dark:text-white">
           {settings.designation}
-        </h6>
+        </h4>
         <ul className="flex gap-2">
           {settings.facebook && (
             <li>
               <a
                 href={settings.facebook}
                 className="flex h-16 w-16 items-center justify-center rounded-xl bg-gray-100 hover:shadow-lg dark:bg-gray-900"
+                aria-label="Facebook Profile"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +59,7 @@ export default async function Sidebar() {
               <a
                 href={settings.linkedin}
                 className="flex h-16 w-16 items-center justify-center rounded-xl bg-gray-100 hover:shadow-lg dark:bg-gray-900"
+                aria-label="LinkedIn Profile"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +80,7 @@ export default async function Sidebar() {
               <a
                 href={settings.twitter}
                 className="flex h-16 w-16 items-center justify-center rounded-xl bg-gray-100 hover:shadow-lg dark:bg-gray-900"
+                aria-label="Twitter Profile"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +101,7 @@ export default async function Sidebar() {
               <a
                 href={settings.github}
                 className="flex h-16 w-16 items-center justify-center rounded-xl bg-gray-100 hover:shadow-lg dark:bg-gray-900"
+                aria-label="GitHub Profile"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
