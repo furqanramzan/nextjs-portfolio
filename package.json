@@ -54,7 +54,7 @@
     "targets": {
       "build": {
         "outputs": [
-          "{projectRoot}/.svelte-kit"
+          "{projectRoot}/.next"
         ]
       },
       "migration": {

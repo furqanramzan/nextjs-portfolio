@@ -23,7 +23,7 @@ pnpm install
 To start a development server:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Building
