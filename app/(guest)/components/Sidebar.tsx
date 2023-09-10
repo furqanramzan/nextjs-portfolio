@@ -16,7 +16,7 @@ export default async function Sidebar() {
   ]);
 
   return (
-    <div className="flex w-full flex-col items-center gap-5 self-start rounded-3xl bg-white px-5 py-12 dark:bg-gray-800 md:flex-row lg:w-1/3 lg:flex-col">
+    <div className="flex w-full shrink-0 flex-col items-center gap-5 self-start rounded-3xl bg-white px-5 py-12 dark:bg-gray-800 md:flex-row lg:w-1/3 lg:flex-col">
       <div className="flex w-full flex-col items-center gap-5">
         <Image
           className="relative top-0 rounded-3xl lg:absolute"
